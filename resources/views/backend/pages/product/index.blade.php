@@ -26,7 +26,7 @@
                                     <th scope="col">Product Category</th>
                                     <th scope="col">Product Brand</th>
                                     <th scope="col">Product Image</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -38,9 +38,9 @@
                                         <td>{{ $product->category->name ?? '' }}</td>
                                         <td>{{ $product->brand->name ?? '' }}</td>
                                         <td>
-                                            <img src="{{ asset('images/products/'.$product->image) }}" alt="" width="82">
+                                            <img src="{{ asset('images/products/'.$product->image) }}" alt="" width="82px" height="100px">
                                         </td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{ route('product.show',$product->id) }}"
                                                 class="btn btn-sm btn-info"><i class="far fa-desktop"> Show</i></a>
                                             <a href="{{ route('product.edit',$product->id) }}"

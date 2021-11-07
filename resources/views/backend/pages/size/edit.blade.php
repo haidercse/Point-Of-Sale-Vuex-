@@ -23,7 +23,7 @@
                             @method('PUT')
                             <div class="form-row">
                               <div class="col-md-7 mb-3">
-                                <label for="name">Size</label>
+                                <label for="name">Size <span class="text-danger">*</span></label>
                                 <input type="text" name="size" class="form-control" id="name" value="{{$size->size }}">
                               </div>
                               <div class="col-md-3 mb-3" style="margin-top: 28px">

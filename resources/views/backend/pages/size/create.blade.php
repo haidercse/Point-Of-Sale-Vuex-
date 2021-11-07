@@ -21,7 +21,7 @@
                             @csrf
                             <div class="form-row">
                               <div class="col-md-7 mb-3">
-                                <label for="name">Size Name</label>
+                                <label for="name">Size Name <span class="text-danger">*</span></label>
                                 <input type="text" name="size" class="form-control" id="size">
                               </div>
                               <div class="col-md-3 mb-3" style="margin-top: 28px">

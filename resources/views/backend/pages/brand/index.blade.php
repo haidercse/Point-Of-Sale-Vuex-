@@ -22,7 +22,7 @@
                                 <tr>
                                     <th scope="col">#</th>
                                     <th scope="col">Brand Name</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -30,7 +30,7 @@
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
                                         <td>{{ $brand->name }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{ route('brand.edit',$brand->id) }}"
                                                 class="btn btn-success"><i class="far fa-edit"> Edit</i></a>
                                                

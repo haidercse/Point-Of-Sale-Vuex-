@@ -24,7 +24,7 @@
                                     <th scope="col">Name</th>
                                     <th scope="col">Email</th>
                                     <th scope="col">Created At</th>
-                                    <th scope="col">Action</th>
+                                    <th scope="col" class="text-center">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
@@ -36,7 +36,7 @@
                                             (You)
                                         @endif</td>
                                         <td>{{ $user->created_at->format('Y-m-d') }}</td>
-                                        <td>
+                                        <td class="text-center">
                                             <a href="{{ route('user.edit',$user->id) }}"
                                                 class="btn btn-success"><i class="far fa-edit"> Edit</i></a>
                                                

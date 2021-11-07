@@ -7,54 +7,83 @@
 @section('admin-content')
    <div class="container mt-5">
        <div class="row">
+           
            <div class="col-md-3">
-            <div class="card text-white bg-primary mb-3">
-                <h1 class="card-header">{{ $total_user }}</h1>
-                <div class="card-body">
-                  <h5 class="card-title">User </h5>
-                  <div class="card-footer">
-                    <a class="text-center text-white" href="{{ route('user.index') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
-                  </div>
+            <div class="single-report mb-xs-30 bg-success" style="border-radius: 5px">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <div class="icon"><i class="fa fa-user"></i></div>
+                    <div class="s-report-title d-flex justify-content-between">
+                        <h4 class="header-title mb-0">User</h4>
+                        <p>{{ $total_user }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a class="text-dark mt-5" href="{{ route('user.index') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
+                    </div>
                 </div>
-              </div>
-           </div>
+                <div class="text-center mt-3">
+                   
+                </div>
+            </div>
+          </div>
+          
            <div class="col-md-3">
-            <div class="card text-white bg-danger mb-3">
-                <h1 class="card-header">{{ $total_product }}</h1>
-                <div class="card-body">
-                  <h5 class="card-title">Product </h5>
-                  <div class="card-footer">
-                    <a class="text-center text-white" href="{{ route('product.index') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
-                  </div>
+            <div class="single-report mb-xs-30 bg-danger" style="border-radius: 5px">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <div class="icon"><i class="fab fa-product-hunt"></i></div>
+                    <div class="s-report-title d-flex justify-content-between">
+                        <h4 class="header-title mb-0">Product</h4>
+                        <p>{{ $total_product }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a class="text-dark mt-5" href="{{ route('product.index') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
+                    </div>
                 </div>
-              </div>
-           </div>
-           <div class="col-md-3">
-            <div class="card text-white bg-success mb-3">
-                <h1 class="card-header">{{  $total_product_stock }}</h1>
-                <div class="card-body">
-                  <h5 class="card-title">Product Stock </h5>
-                  <div class="card-footer">
-                    <a class="text-center text-white" href="{{ route('product.stock.history') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
-                  </div>
+                <div class="text-center mt-3">
+                   
                 </div>
-              </div>
-           </div>
-           <div class="col-md-3">
-            <div class="card text-white bg-warning mb-3">
-                <h1 class="card-header">{{  $total_product_return }}</h1>
-                <div class="card-body">
-                  <h5 class="card-title">Product Return </h5>
-                  <div class="card-footer">
-                      <a class="text-center text-white" href="{{ route('return.product.history') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
-                  </div>
+            </div>
+          </div>
+          <div class="col-md-3">
+            <div class="single-report mb-xs-30 bg-info" style="border-radius: 5px">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <div class="icon"><i class="fas fa-sticky-note"></i></div>
+                    <div class="s-report-title d-flex justify-content-between">
+                        <h4 class="header-title mb-0">Product Stock</h4>
+                        <p>{{  $total_product_stock }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a class="text-dark mt-5" href="{{ route('product.stock.history') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
+                    </div>
                 </div>
-              </div>
-           </div>
+                <div class="text-center mt-3">
+                   
+                </div>
+            </div>
+          </div>
+          
+           
+          <div class="col-md-3">
+            <div class="single-report mb-xs-30 bg-warning" style="border-radius: 5px">
+                <div class="s-report-inner pr--20 pt--30 mb-3">
+                    <div class="icon"><i class="fas fa-exchange-alt"></i></div>
+                    <div class="s-report-title d-flex justify-content-between">
+                        <h4 class="header-title mb-0">Return Product</h4>
+                        <p>{{   $total_product_return }}</p>
+                    </div>
+                    <div class="d-flex justify-content-between">
+                        <a class="text-dark mt-5" href="{{ route('return.product.history') }}"><i class="fas fa-arrow-circle-right"> More Info</i></a>
+                    </div>
+                </div>
+                <div class="text-center mt-3">
+                   
+                </div>
+            </div>
+          </div>
+           
            
        </div>
 
-       <div class="card">
+       <div class="card mt-5">
            <div class="card-body">
             <table class="table table-bordered table-striped">
                 <thead>
@@ -65,7 +94,7 @@
                         <th scope="col">Product Category</th>
                         <th scope="col">Product Brand</th>
                         <th scope="col">Product Image</th>
-                        <th scope="col">Action</th>
+                        <th scope="col" class="text-center">Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -77,9 +106,9 @@
                             <td>{{ $product->category->name ?? '' }}</td>
                             <td>{{ $product->brand->name ?? '' }}</td>
                             <td>
-                                <img src="{{ asset('images/products/'.$product->image) }}" alt="" width="82">
+                                <img src="{{ asset('images/products/'.$product->image) }}" alt="" width="82px" height="100px">
                             </td>
-                            <td>
+                            <td class="text-center">
                                 <a href="{{ route('product.show',$product->id) }}"
                                     class="btn btn-sm btn-info"><i class="far fa-desktop"> Show</i></a>
                                 <a href="{{ route('product.edit',$product->id) }}"

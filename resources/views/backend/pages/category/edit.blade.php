@@ -23,7 +23,7 @@
                             @method('PUT')
                             <div class="form-row">
                               <div class="col-md-7 mb-3">
-                                <label for="name">Category</label>
+                                <label for="name">Category <span class="text-danger">*</span></label>
                                 <input type="text" name="name" class="form-control" id="name" value="{{$category->name }}">
                               </div>
                               <div class="col-md-3 mb-3" style="margin-top: 28px">
