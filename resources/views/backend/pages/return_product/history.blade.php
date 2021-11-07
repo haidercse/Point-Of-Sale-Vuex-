@@ -25,21 +25,18 @@
                                     <th scope="col">Product</th>
                                     <th scope="col">Size</th>
                                     <th scope="col">Quantity</th>
-                                    <th scope="col">Status</th>
                                     
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($stocks as $stock)
+                                @foreach ($return_products as $return_product)
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
-                                        <td>{{ $stock->date }}</td>
-                                        <td>{{ $stock->product->name }}</td>
-                                        <td>{{ $stock->size->size }}</td>
-                                        <td>{{ $stock->quantity }}</td>
-                                        
-                                        <td>{{ $stock->status }}</td>
-                                       
+                                        <td>{{ $return_product->date ?? '' }}</td>
+                                        <td>{{ $return_product->product->name ?? '' }}</td>
+                                        <td>{{ $return_product->size->size ?? '' }}</td>
+                                        <td>{{ $return_product->quantity ?? '' }}</td>
+                                      
                                     </tr>
                                 @endforeach
                             </tbody>

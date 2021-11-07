@@ -4,14 +4,17 @@ use Illuminate\Support\Facades\Route;
 //dashboard controller 
 use App\Http\Controllers\Dashboard\DashboardController;
 //category controller
-use App\Http\Controllers\Backend\CategoriesController;
-//brands controller 
-use App\Http\Controllers\Backend\BrandsController;
-//sizes controller 
-use App\Http\Controllers\Backend\SizesController;
-//products controller
-use App\Http\Controllers\Backend\ProductsController;
-use App\Http\Controllers\Backend\StocksController;
+
+use App\Http\Controllers\Backend\{
+    CategoriesController,
+    BrandsController,
+    SizesController,
+    ProductsController,
+    ReturnProductsController,
+    StocksController,
+    UsersController
+};
+
 use Illuminate\Support\Facades\Auth;
 
 /*
@@ -26,12 +29,18 @@ use Illuminate\Support\Facades\Auth;
 */
 
 Route::get('/', function () {
-    return view('welcome');
+    return redirect('/login');
 });
 
  Route::group(['prefix'=>'dashboard'], function(){
      Route::get('/',[DashboardController::class,'index'])->name('admin.dashboard');
+     
+     //USER
+     Route::resource('user', UsersController::class);
 
+     //LOGOUT USER
+     Route::get('/logout',[UsersController::class,'logout'])->name('user.logout');
+     
      //CATEGORY
      Route::resource('category', CategoriesController::class);
      
@@ -41,8 +50,8 @@ Route::get('/', function () {
      //BRAND
      Route::resource('brand', BrandsController::class);
      
-    //BRAND API
-    Route::get('/api/brands',[BrandsController::class,'getBrands']);
+     //BRAND API
+     Route::get('/api/brands',[BrandsController::class,'getBrands']);
 
      //SIZE
      Route::resource('size', SizesController::class);
@@ -57,9 +66,14 @@ Route::get('/', function () {
      Route::get('/api/products',[ProductsController::class,'getProducts']);
 
      //STOCKS
-    Route::get('stocks',[StocksController::class,'stockIn'])->name('product.stock.in');
-    Route::post('stocks',[StocksController::class,'stockSubmit'])->name('product.stock.submit');
-    Route::get('stocks/history',[StocksController::class,'stockHistory'])->name('product.stock.history');
+     Route::get('stocks',[StocksController::class,'stockIn'])->name('product.stock.in');
+     Route::post('stocks',[StocksController::class,'stockSubmit'])->name('product.stock.submit');
+     Route::get('stocks/history',[StocksController::class,'stockHistory'])->name('product.stock.history');
+
+    //RETURN PRODUCTS
+     Route::get('return-product',[ReturnProductsController::class,'returnProduct'])->name('return.product');
+     Route::post('return-product',[ReturnProductsController::class,'returnProductSubmit'])->name('return.product.submit');
+     Route::get('return-product/history',[ReturnProductsController::class,'returnProductHistory'])->name('return.product.history');
 
  });
 

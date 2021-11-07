@@ -10,6 +10,7 @@ import products from "./modules/products";
 import errors from "./modules/errors";
 import stocks from "./modules/stocks";
 import success from "./modules/success";
+import return_products from "./modules/return_products";
 
 export default new Vuex.Store({
     modules: {
@@ -19,6 +20,7 @@ export default new Vuex.Store({
         products,
         errors,
         stocks,
-        success
+        success,
+        return_products
     }
 })

@@ -23,6 +23,7 @@ Vue.component('example-component', require('./components/ExampleComponent.vue').
 Vue.component('product-add', require('./components/products/ProductAdd.vue').default);
 Vue.component('product-edit', require('./components/products/ProductEdit.vue').default);
 Vue.component('stock-management', require('./components/stocks/StockManagement.vue').default);
+Vue.component('return-product', require('./components/return_products/ReturnProducts.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

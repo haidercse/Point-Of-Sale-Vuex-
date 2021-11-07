@@ -1,45 +1,53 @@
 @extends('backend.layouts.master')
 
 @section('title')
-    Brand List | Point of sale 
+    User List | Point of sale 
 @endsection
 
 @section('admin-content')
     <div class="container">
         <div class="row">
-            <div class="col-md-8">
+            <div class="col-md-10">
                 <div class="card">
                     @include('backend.layouts.partials.message')
                     <div class="card-header">
-                        <h3>Brand  list</h3>
+                        <h3>User  list</h3>
                     </div>
                     <div class="mt-3 justify-content-between">
-                      <a href="{{ route('brand.create') }}" class="float-right btn btn-info"><i class="fas fa-plus-circle"> Add Brand</i></a>
+                      <a href="{{ route('user.create') }}" class="float-right btn btn-info"><i class="fas fa-plus-circle"> Add user</i></a>
                     </div>
                     <div class="card-body">
                         <table class="table table-bordered table-striped" id="data-table">
                             <thead>
                                 <tr>
                                     <th scope="col">#</th>
-                                    <th scope="col">Brand Name</th>
+                                    <th scope="col">Name</th>
+                                    <th scope="col">Email</th>
+                                    <th scope="col">Created At</th>
                                     <th scope="col">Action</th>
                                 </tr>
                             </thead>
                             <tbody>
-                                @foreach ($brands as $brand)
+                                @foreach ($users as $user)
                                     <tr>
                                         <th scope="row">{{ $loop->index + 1 }}</th>
-                                        <td>{{ $brand->name }}</td>
+                                        <td>{{ $user->name }}</td>
+                                        <td>{{ $user->email }} @if (auth()->id() == $user->id)
+                                            (You)
+                                        @endif</td>
+                                        <td>{{ $user->created_at->format('Y-m-d') }}</td>
                                         <td>
-                                            <a href="{{ route('brand.edit',$brand->id) }}"
+                                            <a href="{{ route('user.edit',$user->id) }}"
                                                 class="btn btn-success"><i class="far fa-edit"> Edit</i></a>
                                                
-                                            <a href="#delteModal{{ $brand->id }}" data-toggle="modal"
+                                            @if (auth()->id() != $user->id)
+                                                <a href="#delteModal{{ $user->id }}" data-toggle="modal"
                                                 class="btn btn-danger"><i class="far fa-trash-alt"> Delete</i></a>
+                                            @endif
 
 
                                             <!--Delete  Modal -->
-                                            <div class="modal fade" id="delteModal{{ $brand->id }}" tabindex="-1"
+                                            <div class="modal fade" id="delteModal{{ $user->id }}" tabindex="-1"
                                                 aria-labelledby="exampleModalLabel" aria-hidden="true">
                                                 <div class="modal-dialog">
                                                     <div class="modal-content">
@@ -52,7 +60,7 @@
                                                             </button>
                                                         </div>
                                                         <div class="modal-body">
-                                                            <form action="{{ route('brand.destroy', $brand->id) }}"
+                                                            <form action="{{ route('user.destroy', $user->id) }}"
                                                                 method="POST">
                                                                 @method('DELETE')
                                                                 @csrf

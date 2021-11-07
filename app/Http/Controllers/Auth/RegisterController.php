@@ -11,6 +11,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RegisterController extends Controller
 {
+    
     /*
     |--------------------------------------------------------------------------
     | Register Controller
@@ -21,7 +22,7 @@ class RegisterController extends Controller
     | provide this functionality without requiring any additional code.
     |
     */
-
+   
     use RegistersUsers;
 
     /**
@@ -38,7 +39,8 @@ class RegisterController extends Controller
      */
     public function __construct()
     {
-        $this->middleware('guest');
+        return abort(404,'Not found!');
+        //$this->middleware('guest');
     }
 
     /**
